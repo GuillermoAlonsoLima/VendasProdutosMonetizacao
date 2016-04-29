@@ -10,11 +10,10 @@ public final class Venda {
     private static int codigo_principal = 1;
     private int codigo;
     private Conta conta_comprador;
-    private Conta conta_vendedor;
     private final Date data_venda;
     private final double valor;
     private Produto produto;
-    Date data = new Date();
+    private Date data = new Date();
 
     /** Venda
      * o codigo principal é incrementado e "static" por representar o incremento do "id";
@@ -30,7 +29,6 @@ public final class Venda {
         codigo_principal++;
         data_venda = data;
         conta_comprador = conta;
-        conta_vendedor = produto.getConta();
         this.produto = produto;
         valor = produto.getPreco();
     }
@@ -97,23 +95,5 @@ public final class Venda {
     public double getValor(){
         return valor;
     }
-
-    /** getConta_vendedor
-     * Retorna conta vendedor
-     * @return Retorna conta vendedor
-     */
-    public Conta getConta_vendedor() {
-        return conta_vendedor;
-    }
-
-    /** setConta_vendedor
-     * configura conta do vendedor
-     * @param conta_vendedor conta do vendedor a mudar
-     */
-    public void setConta_vendedor(Conta conta_vendedor) {
-        this.conta_vendedor = conta_vendedor;
-    }
-    
-    
 
 }

@@ -22,15 +22,15 @@ public class Main {
         Conta_Repositorio.addConta(new Conta(700.55,Cliente_Repositorio.getCliente_repositorio().get(2),"antonio"));
         Conta_Repositorio.addConta(new Conta(800.55,Cliente_Repositorio.getCliente_repositorio().get(3),"diego"));
         Conta_Repositorio.addConta(new Conta(900.55,Cliente_Repositorio.getCliente_repositorio().get(4),"marcos"));       
-        Produto_Repositorio.addProduto(new Produto("leite",15.00,Conta_Repositorio.getConta_repositorio().get(0)));
-        Produto_Repositorio.addProduto(new Produto("carne",20.00,Conta_Repositorio.getConta_repositorio().get(0)));
-        Produto_Repositorio.addProduto(new Produto("vegetais",5.00,Conta_Repositorio.getConta_repositorio().get(1)));
-        Produto_Repositorio.addProduto(new Produto("leite",15.00,Conta_Repositorio.getConta_repositorio().get(2)));
-        Produto_Repositorio.addProduto(new Produto("leite",15.00,Conta_Repositorio.getConta_repositorio().get(2)));
-        Produto_Repositorio.addProduto(new Produto("carne",20.00,Conta_Repositorio.getConta_repositorio().get(3)));
-        Produto_Repositorio.addProduto(new Produto("frutas",30.00,Conta_Repositorio.getConta_repositorio().get(4)));
-        Produto_Repositorio.addProduto(new Produto("calculadora",40.00,Conta_Repositorio.getConta_repositorio().get(5)));
-        Produto_Repositorio.addProduto(new Produto("livro",50.00,Conta_Repositorio.getConta_repositorio().get(6)));
+        Produto_Repositorio.addProduto(new Produto("leite",15.00));
+        Produto_Repositorio.addProduto(new Produto("carne",20.00));
+        Produto_Repositorio.addProduto(new Produto("vegetais",5.00));
+        Produto_Repositorio.addProduto(new Produto("leite",15.00));
+        Produto_Repositorio.addProduto(new Produto("leite",15.00));
+        Produto_Repositorio.addProduto(new Produto("carne",20.00));
+        Produto_Repositorio.addProduto(new Produto("frutas",30.00));
+        Produto_Repositorio.addProduto(new Produto("calculadora",40.00));
+        Produto_Repositorio.addProduto(new Produto("livro",50.00));
         //teste ^     
         Menus.Menu_Inicial();
     }

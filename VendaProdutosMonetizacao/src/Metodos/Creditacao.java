@@ -21,9 +21,19 @@ public class Creditacao {
      * @param deposito quantidade que deseja depositar
      */
     public static void Deposito(Conta conta,double deposito){
-        conta.setSaldo(deposito + conta.getSaldo());
+        conta.Depositar(deposito);
         conta.setQtd_monetizacao();
     } 
+    
+    /** Retiro
+     * Retira dinheiro da conta
+     * @param conta conta que terá dinheiro retirado
+     * @param retiro quantidade que deseja retirar 
+     */
+    public static void Retiro(Conta conta,double retiro){
+        conta.Retirar(retiro);
+        conta.setQtd_monetizacao();
+    }
 
     /** Compra
      * O que faz:Transfere o valor correspondente ao produto do comprador ao vendedor; 
@@ -35,20 +45,18 @@ public class Creditacao {
      * @param nome_produto o nome do produto que deseja comprar
      */
     public static void Compra(Conta conta_comprador,String nome_produto){
-        Produto produto = Produto_Repositorio.getProduto(nome_produto,conta_comprador);
+        Produto produto = Produto_Repositorio.getProduto(nome_produto);
         if(produto == null){
             System.out.println("O produto não existe!");
         }else{
-            Conta conta_vendedor = produto.getConta();
             double debito = produto.getPreco();
             if(conta_comprador.getSaldo()<debito){
                 System.out.println("Não há credito o suficiente para terminar transferência!");
             }else{
-                conta_comprador.setSaldo(conta_comprador.getSaldo()-debito);
-                conta_vendedor.setSaldo(conta_vendedor.getSaldo()+debito);
+                conta_comprador.Depositar(debito);
                 Venda_Repositorio.addVenda(new Venda(conta_comprador,produto));
                 Produto_Repositorio.delProduto(produto);
-                conta_comprador.setQtd_compras();conta_vendedor.setQtd_vendas();
+                conta_comprador.setQtd_compras();
                 System.out.println("Compra efetuada com sucesso!");
             }
         }
@@ -73,8 +81,8 @@ public class Creditacao {
             if(transferidor.getSaldo()<transferencia){
                 System.out.println("Não há credito o suficiente para terminar transferência!");
             }else{
-                transferidor.setSaldo(transferidor.getSaldo()-transferencia);
-                transferido.setSaldo(transferido.getSaldo()+transferencia);
+                transferidor.Retirar(transferencia);
+                transferido.Depositar(transferencia);
                 transferidor.setQtd_monetizacao();transferido.setQtd_monetizacao();
             }
         }
@@ -99,8 +107,8 @@ public class Creditacao {
             if(transferidor.getSaldo()<transferencia){
                 System.out.println("Não há credito o suficiente para terminar transferência!");
             }else{
-                transferidor.setSaldo(transferidor.getSaldo()-transferencia);
-                transferido.setSaldo(transferido.getSaldo()+transferencia);
+                transferidor.Retirar(transferencia);
+                transferido.Depositar(transferencia);
                 transferidor.setQtd_monetizacao();transferido.setQtd_monetizacao();
             }
         }

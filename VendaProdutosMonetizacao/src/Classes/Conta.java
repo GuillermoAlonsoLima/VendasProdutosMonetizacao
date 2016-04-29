@@ -134,7 +134,37 @@ public class Conta {
         qtd_monetizacao++;
     }
     
+    /**
+     * Deposita saldo na conta
+     * @param saldo dinheiro a depositar
+     */
+    public void Depositar(double saldo){
+        this.saldo+=saldo;
+    }
     
+    public void Retirar(double saldo){
+        this.saldo-=saldo;
+    }
+    
+    /**
+     * transfere dinheiro desta conta para outra
+     * @param saldo dinheiro a transferir
+     * @param conta_transferido conta que recebera dinheiro
+     */
+    public void Transferir_Outro(double saldo,Conta conta_transferido){
+        this.Retirar(saldo);
+        conta_transferido.Depositar(saldo);
+    }
+    
+    /**
+     * transfere dinheiro de outra conta para esta
+     * @param saldo dinheiro a transferir
+     * @param conta_transferidor conta que enviará dinheiro
+     */
+    public void Transferir_Mesmo(double saldo,Conta conta_transferidor){
+        this.Depositar(saldo);
+        conta_transferidor.Retirar(saldo);
+    }
     
     /** Compare_to_Compras
      * O que faz:Compara a quantidade de compras de dois usuarios; 
@@ -154,26 +184,7 @@ public class Conta {
             return 1;
         }
     }
-
-    /** Compare_to_Vendas
-     * O que faz:Compara a quantidade de vendas de dois usuarios; 
-     * Como funciona:se a qtd de vendas do usuario comparado for menor que o usuario que compara,retornara "1",
-     * se a qtd de vendas do usuario comparado for maior que o usuario que compara,retornara "false", se for igual 
-     * não retornará nada;
-     * @param conta conta a comparar
-     * @return retorna "1" se a qtd de vendas deste usuario for maior que o outro, "false" se for o contrario
-     *                 e null se os dois forem iguais;
-     */
-    public int Compare_to_Vendas(Conta conta){
-       if(this.getQtd_vendas()>conta.getQtd_vendas()){
-            return 1;
-        }else if(this.getQtd_vendas()<conta.getQtd_vendas()){
-            return -1;
-        }else{
-            return 0;
-        }
-    }
-
+    
     /** Compare_to_Monetizacao
      * O que faz:Compara a quantidade de operações de monetização de dois usuarios; 
      * Como funciona:se a qtd de operações de monetização do usuario comparado for menor que o usuario que compara,retornara "1",

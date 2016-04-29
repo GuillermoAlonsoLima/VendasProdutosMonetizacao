@@ -2,6 +2,7 @@ package UI;
 
 import Classes.Conta;
 import Classes.Produto;
+import Metodos.Relatorio;
 import java.util.ArrayList;
 
 /** Mostrar_Relatorios
@@ -21,6 +22,7 @@ public class Mostrar_Relatorios {
         for(Produto p : produtos){
             System.out.println(p.getNome());
         }
+        System.out.println("Quantidade:"+Relatorio.getQuantidade());
     }
     
     /** Mostrar_Clientes
@@ -35,5 +37,6 @@ public class Mostrar_Relatorios {
                 System.out.println(c.getUsuario());
             }
         }
+        System.out.println("Quantidade:"+Relatorio.getQuantidade());
     }
 }

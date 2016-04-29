@@ -9,7 +9,6 @@ public class Produto {
     private int codigo;
     private String nome;
     private double preco;
-    private Conta conta;
 
     /** Produto
      * Construtor do produto
@@ -17,28 +16,12 @@ public class Produto {
      * o outro codigo é o id da venda em si;
      * @param nome nome do produto
      * @param preco preço do produto
-     * @param conta conta do produto
      */
-    public Produto(String nome, double preco, Conta conta) {
+    public Produto(String nome, double preco) {
         codigo=codigo_principal;
         codigo_principal++;
         this.nome = nome;
         this.preco = preco;
-        this.conta = conta;
-    }
-    /** getConta
-     * retorna conta
-     * @return retorna conta
-     */
-    public Conta getConta() {
-        return conta;
-    }
-    /** setConta
-     * configura conta
-     * @param conta conta a mudar
-     */
-    public void setConta(Conta conta) {
-        this.conta = conta;
     }
     /** getCodigo
      * retorna codigo

@@ -40,11 +40,9 @@ public class Produto_Repositorio {
      * @param comprador pessoa que esta comprando o produto 
      * @return retorna o produto encontrado
      */
-    public static Produto getProduto(String nome,Conta comprador){
+    public static Produto getProduto(String nome){
         for(Produto p : produto_repositorio){
-            if(p.getConta() == comprador){
-                
-            }else if(p.getNome().equals(nome)){
+            if(p.getNome().equals(nome)){
                 return p;
             }
         }

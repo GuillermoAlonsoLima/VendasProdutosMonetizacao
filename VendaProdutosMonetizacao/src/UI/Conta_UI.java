@@ -22,21 +22,29 @@ public class Conta_UI {
                 System.out.println("O cpf deve conter 11 numeros");   
             }else{
                 String nome = Console.scanString("Digite seu nome:");
-                String email = Console.scanString("Digite seu e-mail:");
-                if(email.contains("@")){
-                    double saldo = Double.parseDouble(Console.scanString("Digite o seu saldo inicial:"));
-                    String usuario = Console.scanString("Digite o nome da conta:");
-                    Cliente cliente = new Cliente(cpf,nome,email);
-                    if(Cliente_Repositorio.getCliente_repositorio().contains(cliente)){
-                        System.out.println("Cliente já existe!");
-                    }else if(Conta_Repositorio.getConta(nome)!=null){
-                        System.out.println("Conta já existe!");
-                    }else{    
-                        Cliente_Repositorio.addCliente(cliente);
-                        Conta_Repositorio.addConta(new Conta(saldo,cliente,usuario));
-                    }
+                if(nome.isEmpty()){
+                    System.out.println("O nome está vazio!");
                 }else{
-                    System.out.println("Email invalido!");
+                    String email = Console.scanString("Digite seu e-mail:");
+                    if(email.contains("@")){
+                        double saldo = Double.parseDouble(Console.scanString("Digite o seu saldo inicial:"));
+                        String usuario = Console.scanString("Digite o nome da conta:");
+                        if(usuario.isEmpty()){
+                            System.out.println("Usuario vazio!");
+                        }else{
+                            Cliente cliente = new Cliente(cpf,nome,email);
+                            if(Cliente_Repositorio.getCliente_repositorio().contains(cliente)){
+                                System.out.println("Cliente já existe!");
+                            }else if(Conta_Repositorio.getConta(nome)!=null){
+                                System.out.println("Conta já existe!");
+                            }else{    
+                                Cliente_Repositorio.addCliente(cliente);
+                                Conta_Repositorio.addConta(new Conta(saldo,cliente,usuario));
+                            }
+                        }
+                    }else{
+                        System.out.println("Email invalido!");
+                    }
                 }
             }
         }catch(NumberFormatException e){
@@ -52,7 +60,9 @@ public class Conta_UI {
         try{
             double saldo = Double.parseDouble(Console.scanString("Digite o seu saldo inicial:"));
             String usuario = Console.scanString("Digite o nome da conta:");
-            if(Conta_Repositorio.getConta(usuario) == null){
+            if(usuario.isEmpty()){
+                System.out.println("Usuario vazio!");
+            }else if(Conta_Repositorio.getConta(usuario) == null){
                 Conta_Repositorio.addConta(new Conta(saldo,cliente,usuario));
             }else{
                 System.out.println("Conta já existe!");

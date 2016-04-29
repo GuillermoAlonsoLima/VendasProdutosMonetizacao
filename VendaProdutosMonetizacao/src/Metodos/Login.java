@@ -20,7 +20,7 @@ public class Login {
      * @return conta encontrada pela verificação  
      */
     public static Conta Logar_Conta(String nome){
-        Conta conta = Conta_Repositorio.getConta(nome);
+        conta = Conta_Repositorio.getConta(nome);
         if(conta == null){
             System.out.println("Conta não existe.");
             return conta;
